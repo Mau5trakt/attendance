@@ -1,0 +1,8 @@
+flask
+flask_sqlalchemy
+flask_migrate
+flask_script
+flask_wtf
+mysql-connector-python
+requests
+flask_session
