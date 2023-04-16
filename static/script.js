@@ -1,19 +1,42 @@
-var est = [];
-var grup = [];
+var est = []; //Lista de estudiantes
+var grup = []; //lista de grupos
+var sem = []; //listas de semanas
+var day = []; //listas de dias
+var bloq = []; // listas de bloques
+var cumpli = []; //lista de cumplimiento
+var coment = []; //lista de comentarios
+
+
 
 function agregar() {
         event.preventDefault(); // Evita que el formulario se envíe
 
         // Obtén los valores seleccionados del select y el input
+
         var grupo = document.getElementById('grupo').value;
         var estudiante = document.getElementById('seleccion-estudiantes').value;
+        var semana = document.getElementById('Semana').value;
+        var dia = document.getElementById('Dsemana').value;
+        var bloque = document.getElementById('Bloque').value;
+        var cumplimiento = document.getElementById('Cumplimiento').value;
+        var comentario = document.getElementById('Comentario').value;
+
+
 
         // Crea un nuevo elemento de lista y añade los valores a la lista
         var nuevoElemento = document.createElement('li');
-        nuevoElemento.textContent = 'Grupo: ' + grupo + ', Estudiante: ' + estudiante;
+        nuevoElemento.textContent = `Grupo: ${grupo}, Estudiante: ${estudiante}, Semana: ${semana},
+        Dia: ${dia}, Bloque: ${bloque}, Cumplimiento: ${cumplimiento}, Comentario: ${comentario}`
         document.getElementById('listaEstudiantes').appendChild(nuevoElemento);
-        est.push(estudiante)
-        grup.push(grupo)
+
+
+        est.push(estudiante);
+        grup.push(grupo);
+        sem.push(semana);
+        day.push(dia);
+        bloq.push(bloque);
+        cumpli.push(cumplimiento);
+        coment.push(comentario);
 
 
         //document.getElementById('grupo').value = '';
@@ -23,7 +46,7 @@ function agregar() {
 function enviar(){
     event.preventDefault(); // Evita que el formulario se envíe
      let url = "/procesar";
-     var data = JSON.stringify({"estudiantes": est , "grupos": grup});
+     var data = JSON.stringify({"estudiantes": est , "grupos": grup, "semana" : sem, "dia": day, "bloque": bloq, "cumplimiento": cumpli, "comentario": coment });
     let http = new XMLHttpRequest();
     http.open("POST", url);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");

@@ -46,9 +46,24 @@ def procesar():
         data = request.get_json()
         estudiante = data.get("estudiantes")
         grupo = data.get("grupos")
+        semana = data.get("semana")
+        dia = data.get("dia")
+        bloque = data.get("bloque")
+        cumplimiento = data.get("cumplimiento")
+        comentario = data.get("comentario")
+
 
         print(estudiante)
         print(grupo)
+        print(semana)
+        print(dia)
+        print(bloque)
+        print(cumplimiento)
+        print(comentario)
+
+
+
+
 
         print(len(estudiante))
 
