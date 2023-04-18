@@ -41,56 +41,35 @@ def inicio():  # put application's code here
 
 @app.route('/procesar', methods=["GET", "POST"])
 def procesar():
-    print("Llega a procesar")
-    try:
-        data = request.get_json()
-        estudiante = data.get("estudiantes")
-        grupo = data.get("grupos")
-        semana = data.get("semana")
-        dia = data.get("dia")
-        bloque = data.get("bloque")
-        cumplimiento = data.get("cumplimiento")
-        comentario = data.get("comentario")
+    data = request.get_json()
+    estudiante = data.get("estudiantes")
+    grupo = data.get("grupos")
+    semana = data.get("semana")
+    dia = data.get("dia")
+    bloque = data.get("bloque")
+    cumplimiento = data.get("cumplimiento")
+    comentario = data.get("comentario")
+    staff_id = 1 #! Obtenerlo del login
 
-
-        print(estudiante)
-        print(grupo)
-        print(semana)
-        print(dia)
-        print(bloque)
-        print(cumplimiento)
-        print(comentario)
-
-
-
-
-
-        print(len(estudiante))
-
-        for a in range(len(estudiante)):
-            print(f"Estudiante: {estudiante[a]}: Grupo: {grupo[a]}")
-    except:
-        print("dato invalido")
-        #Crear una ruta para decir que hay un error
-
-        #estudiantes = request.get_data("est")
-    #print(estudiantes)
-    #datos_estudiantes =  request.get_data("est")
-    #datos_str = datos_estudiantes.decode('utf-8')
-
-    #datos_grupo = request.get_data("grup")
-    #grupo_str = datos_grupo.decode('utf-8')
-
-    #estudiantes_lista = datos_str.split(',')
-    #grupo_lista = grupo_str.split(',')
-
-    #print(estudiantes_lista)
-    #print(grupo_lista)
-
-
-
-
-
+    for a in range(len(estudiante)):
+        obj_estudiante = Estudiantes.query.filter_by(nombre=estudiante[a]).first()
+        print(f"obj_estudiante: {obj_estudiante}")
+        if obj_estudiante:
+            print(f"Nombre: {obj_estudiante.nombre} Codigo: {obj_estudiante.codigo} Grupo: {obj_estudiante.grupo}")
+            insercion = Registros(staff_id=staff_id,
+                                  estudiante_id=obj_estudiante.id,
+                                  ciclo=obj_estudiante.ciclo,
+                                  grupo=obj_estudiante.grupo,
+                                  nombre=obj_estudiante.nombre,
+                                  type="OH",
+                                  a_j="A",
+                                  oh_week=semana[a],
+                                  weekday=dia[a],
+                                  hour=bloque[a],
+                                  duration=cumplimiento[a])
+            db.session.add(insercion)
+            db.session.commit()
+        #print(f"Estudiante: {estudiante[a]}: Grupo: {grupo[a]} Semana: {semana[a]} Dia: {dia[a]} Bloque: {bloque[a]} "  )
     return redirect(url_for("inicio"))
 
 
