@@ -11,7 +11,11 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:Mysql.90210@localhost/attendance'
+
+with open('cred.txt', 'r') as f:
+    primera_linea = f.readline()
+
+app.config['SQLALCHEMY_DATABASE_URI'] = primera_linea
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #   Trackear las modificaciones realizadas
 db.init_app(app)
 
