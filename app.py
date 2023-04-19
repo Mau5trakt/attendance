@@ -56,15 +56,15 @@ def procesar():
     staff_id = 1 #! Obtenerlo del login
 
     for a in range(len(estudiante)):
-        obj_estudiante = Estudiantes.query.filter_by(nombre=estudiante[a]).first()
+        obj_estudiante = Estudiantes.query.filter_by(student=estudiante[a]).first()
         print(f"obj_estudiante: {obj_estudiante}")
         if obj_estudiante:
-            print(f"Nombre: {obj_estudiante.nombre} Codigo: {obj_estudiante.codigo} Grupo: {obj_estudiante.grupo}")
+            print(f"Nombre: {obj_estudiante.student} Codigo: {obj_estudiante.code} Grupo: {obj_estudiante.group}")
             insercion = Registros(staff_id=staff_id,
-                                  estudiante_id=obj_estudiante.id,
-                                  ciclo=obj_estudiante.ciclo,
-                                  grupo=obj_estudiante.grupo,
-                                  nombre=obj_estudiante.nombre,
+                                  student_id=obj_estudiante.id,
+                                  cicle=obj_estudiante.cicle,
+                                  group=obj_estudiante.group,
+                                  student_name=obj_estudiante.student,
                                   type="OH",
                                   a_j="A",
                                   oh_week=semana[a],
