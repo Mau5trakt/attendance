@@ -61,7 +61,7 @@ function enviar(){
         }
     };
 
-     // http.send()
-
+    alert(`Datos enviados exitosamente, se enviarion ${est.length} estudiantes`);
+    location.reload();
 }
 
