@@ -2,83 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Asistencia </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/pruebaArticulo.css">
+    <link rel="stylesheet" href="../static/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@800&family=Lusitana&family=Maitree&display=swap" rel="stylesheet">
+    <title>Nav</title>
 </head>
 <body>
-<h2> Asistencia</h2>
-  <form method="post">
-    <label for="grupo"> Seleccione el grupo</label>
-      <select name="grupo" id="grupo">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-      </select>
-      <br><br>
-      <label for="Estudiante" name="Estudiante" id="Estudiante">Nombre del estudiante</label>
-    <input list="Estudiantes" id="seleccion-estudiantes">
-      <datalist id="Estudiantes">
-      {% for estudiante in estudiantes %}
-          <option value="{{ estudiante.nombre }}">
+    <header>
+        <div class="logo">
+            <a href="#" class="logo-texto">CS50 Attendance</a>
+        </div>
+    
+    <nav>
+        <a href="" class="nav-link ">Asistencia Clases</a>
+        <a href="" class="nav-link">Registros</a>
+        <a href="" class="nav-link">Datos</a>
+    </nav>
+</header>
+    <div class="contenedor">
 
-      {% endfor %}
-
-        </datalist>
-      <br>
-      <label for="Semana" name="Semana" >Semana de OH </label>
-      <select name="Semana" id="Semana">
-          {% for i in range(1, 19) %}
-            <option value="{{ i }}"> {{ i }} </option>
-          {% endfor %}
-      </select>
-      <br>
-
-      <label for="Dsemana" name="Dsemana" >Dia de la semana </label>
-      <select name="Dsemana" id="Dsemana">
-            <option value="ma"> ma </option>
-            <option value="mi"> mi </option>
-            <option value="vi"> vi </option>
-            <option value="sab"> sab </option>
-      </select>
-      <br>
-
-       <label for="Bloque" name="Bloque" >Bloque </label>
-      <select name="Bloque" id="Bloque">
-            <option value="8-10"> 8-10 </option>
-            <option value="10-12"> 10-12 </option>
-            <option value="12-02"> 12-02 </option>
-            <option value="02-04"> 02-04 </option>
-            <option value="04-06"> 04-06 </option>
-      </select>
-      <br>
-
-      <label for="Cumplimiento" name="Cumplimiento" >Cumplimiento </label>
-      <select name="Cumplimiento" id="Cumplimiento">
-            <option value="0.5"> 0.5 </option>
-            <option value="1"> 1 </option>
-            <option value="1.5"> 1.5 </option>
-            <option value="2"> 2 </option>
-      </select>
-      <br>
-
-      <label for="Comentario" name="Comentario" >Comentario </label>
-      <input type="text" name="Comentario" id="Comentario">
-      <br>
+        <article>
+            <div class="asistenciaForm">
+                <div class="titulo">
+                    <h1>Asistencia Office Hours</h1>
+                </div>
 
 
+                <div class="asistenciaForm">
 
+                    <label for="grupo" class="texto"> Seleccione el grupo</label>
+                      <select name="grupo" id="grupo" class="texto">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                      </select>
+                      <br><br>
+                
+                    <label for="Estudiante" name="Estudiante" id="Estudiante" class="texto">Nombre del estudiante</label>
+                        <input list="Estudiantes" id="seleccion-estudiantes" class="texto">
+                            <datalist id="Estudiantes">
+                            {% for estudiante in estudiantes %}
+                            <option value="{{ estudiante.nombre }}" class="texto">
+                
+                            {% endfor %}
+                
+                            </datalist>
+                      <br>
+                
+                      <label for="Semana" name="Semana" class="texto" >Semana de OH </label>
+                      <select name="Semana" id="Semana" class="texto">
+                          {% for i in range(1, 19) %}
+                            <option value="{{ i }}" class="texto"> {{ i }} </option>
+                          {% endfor %}
+                      </select>
+                      <br>
+                
+                      <label for="Dsemana" name="Dsemana"  class="texto">Dia de la semana </label>
+                      <select name="Dsemana" id="Dsemana" class="texto">
+                            <option value="ma"class="texto"> ma </option>
+                            <option value="mi"class="texto"> mi </option>
+                            <option value="vi"class="texto"> vi </option>
+                            <option value="sab"class="texto"> sab </option>
+                      </select>
+                      <br>
+                
+                       <label for="Bloque" name="Bloque" class="texto">Bloque </label>
+                      <select name="Bloque" id="Bloque"class="texto">
+                            <option value="8-10"> 8-10 </option>
+                            <option value="10-12"> 10-12 </option>
+                            <option value="12-02"> 12-02 </option>
+                            <option value="02-04"> 02-04 </option>
+                            <option value="04-06"> 04-06 </option>
+                      </select>
+                      <br>
+                
+                      <label for="Cumplimiento" name="Cumplimiento" class="texto">Cumplimiento </label>
+                      <select name="Cumplimiento" id="Cumplimiento"class="texto">
+                            <option value="0.5"> 0.5 </option>
+                            <option value="1"> 1 </option>
+                            <option value="1.5"> 1.5 </option>
+                            <option value="2"> 2 </option>
+                      </select>
+                      <br>
+                
+                      <label for="Comentario" name="Comentario" class="texto">Comentario </label>
+                      <input type="text" name="Comentario" id="Comentario"class="texto">
+                      <br>
+                
+                    <button id="btnAgregar" onclick="agregar()" class="btnAgregar">
+                        agregar
+                    </button>
+                
+                    </div>
 
-    <button id="btnAgregar" onclick="agregar()">
-        agregar
-    </button>
-  <ul id="listaEstudiantes">
-    <br> <br> <br><input type="submit" value="Submit" onclick="enviar()">
-</ul>
+                    <div class="lista">
+                        <ul id="listaEstudiantes" class="texto">
+                          <br> <br> <br><input type="submit" value="Submit" onclick="enviar()">
+                      </ul>
+                      </div>
+                      
 
-  </form>
-
-
-
-<script src="../static/script.js"></script>
+            </div>
+        </article>
+    </div>
+<script src="../static/script.js"> </script>
 </body>
-
 </html>
