@@ -33,17 +33,21 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/ohAttendance', methods=["GET", "POST"])
 def inicio():  # put application's code here
     estudiantes = Estudiantes.query.order_by('id')
-
     if request.method == "POST":
         print("Se manda algo")
 
 
     return render_template('ohattendance.html', estudiantes=estudiantes)
 
-@app.route('/procesar', methods=["GET", "POST"])
+@app.route('/classAttendance', methods=["GET", "POST"])
+def classAttendance():  # put application's code here
+    estudiantes = Estudiantes.query.order_by('id')
+    return render_template('classAttendance.html', estudiantes=estudiantes)
+
+@app.route('/procesarOH', methods=["GET", "POST"])
 def procesar():
     data = request.get_json()
     estudiante = data.get("estudiantes")
