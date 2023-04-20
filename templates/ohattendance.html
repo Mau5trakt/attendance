@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/ohattendance.css">
-    <link rel="stylesheet" href="../static/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@800&family=Lusitana&family=Maitree&display=swap" rel="stylesheet">
-    <title>Nav</title>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="#" class="logo-texto">CS50 Attendance</a>
-        </div>
-    
-    <nav>
-        <a href="" class="nav-link ">Asistencia Clases</a>
-        <a href="" class="nav-link">Registros</a>
-        <a href="" class="nav-link">Datos</a>
-    </nav>
-</header>
-    <div class="contenedor">
+{% extends "layout.html"%}
 
+{%block title%}
+    Asistencia OH
+{%endblock%}
+
+{%block links%}
+<a href="/classAttendance" class="nav-link">Asistencia Clases</a>
+<a href="/registros" class="nav-link">Registros</a>
+<a href="/datos" class="nav-link">Datos</a>
+{%endblock%}
+
+{%block contenido%}
         <article>
             <div class="asistenciaForm">
                 <div class="titulo">
@@ -93,7 +79,7 @@
                       <input type="text" name="Comentario" id="Comentario"class="texto">
                       <br>
                 
-                    <button id="btnAgregar" onclick="agregar()" class="btnAgregar">
+                    <button id="btnAgregar" onclick="agregarOH()" class="btnAgregar">
                         agregar
                     </button>
                 
@@ -101,14 +87,12 @@
 
                     <div class="lista">
                         <ul id="listaEstudiantes" class="texto">
-                          <br> <br> <br><input type="submit" value="Submit" onclick="enviar()">
+                          <br> <br> <br><input type="submit" value="Submit" onclick="enviarOH()">
                       </ul>
                       </div>
                       
 
             </div>
         </article>
-    </div>
 <script src="../static/script.js"> </script>
-</body>
-</html>
+{%endblock%}
