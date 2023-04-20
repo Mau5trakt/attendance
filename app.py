@@ -41,7 +41,7 @@ def inicio():  # put application's code here
         print("Se manda algo")
 
 
-    return render_template('index.html', estudiantes=estudiantes)
+    return render_template('ohattendance.html', estudiantes=estudiantes)
 
 @app.route('/procesar', methods=["GET", "POST"])
 def procesar():
