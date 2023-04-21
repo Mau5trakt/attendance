@@ -97,7 +97,7 @@ function agregarClass() {
 function enviarClass(){
     event.preventDefault();
      let url = "/procesarClass";
-     var data = JSON.stringify({"estudiantes": est , "grupos": grup, "semana" : sem, "dia": day, "bloque": bloq, "cumplimiento": cumpli, "comentario": coment });
+     var data = JSON.stringify({"estudiantes": est, "grupos": grup, "lectures": lecture,"a_j": a_j, "comentario": coment });
     let http = new XMLHttpRequest();
     http.open("POST", url);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
