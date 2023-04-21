@@ -33,8 +33,8 @@ class Registros(db.Model):
     type = db.Column(db.String(2), nullable=False)
     a_j = db.Column(db.String(1), nullable=False)
     oh_week = db.Column(db.Integer)
-    weekday = db.Column(db.String(15), nullable=False)
-    hour = db.Column(db.String(6), nullable=False)
+    weekday = db.Column(db.String(15))
+    hour = db.Column(db.String(6))
     duration = db.Column(db.Integer)
 
     staff = db.relationship('Staff', back_populates='registros')
