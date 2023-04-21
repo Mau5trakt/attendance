@@ -47,7 +47,8 @@ article{
     justify-content: center;
     display: flex;
     flex-direction: column;
-    
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 div .titulo{
