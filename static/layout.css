@@ -1,0 +1,97 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    background-color: #3D53AA;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo{
+    display: flex;
+}
+
+.logo-texto{
+    font-family: 'Lusitana', serif;
+    color: #fff;
+    font-size: 60px;
+}
+
+nav a{
+    font-family: 'Lusitana', serif;
+    color: #fff;
+    font-size: 40px;
+    margin: 0px 15px 0px 15px;
+}
+
+a:link, a:visited, a:active{
+    text-decoration: none;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+article{
+    height: auto;
+    width: 60%;
+    padding: 0px 20px 0px 20px;
+}
+
+
+.asistenciaForm{
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+div .titulo{
+    text-align: center;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+
+.texto{
+    font-family: 'Maitree', serif;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.btnAgregar{
+    width: 30%;
+}
+
+
+@media only screen and (max-width: 785px){
+    header{
+        flex-direction: column;
+    }
+
+    nav{
+        padding: 10px 0px;
+    }
+
+
+    nav a{
+        font-size: 20px;
+    }
+
+    .contenedor{
+        flex-direction: column;
+    }
+
+    article{
+        width: 100%;
+    }
+
+    aside{
+        width: 100%;
+    }
+
+}

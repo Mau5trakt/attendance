@@ -5,10 +5,12 @@ var day = []; //listas de dias
 var bloq = []; // listas de bloques
 var cumpli = []; //lista de cumplimiento
 var coment = []; //lista de comentarios
+var lecture = [];
+var a_j = [];
 
 
 
-function agregar() {
+function agregarOH() {
         event.preventDefault(); // Evita que el formulario se envíe
 
         // Obtén los valores seleccionados del select y el input
@@ -43,9 +45,9 @@ function agregar() {
         document.getElementById('seleccion-estudiantes').value = '';
 }
 
-function enviar(){
+function enviarOH(){
     event.preventDefault(); // Evita que el formulario se envíe
-     let url = "/procesar";
+     let url = "/procesarOH";
      var data = JSON.stringify({"estudiantes": est , "grupos": grup, "semana" : sem, "dia": day, "bloque": bloq, "cumplimiento": cumpli, "comentario": coment });
     let http = new XMLHttpRequest();
     http.open("POST", url);
@@ -61,7 +63,55 @@ function enviar(){
         }
     };
 
-     // http.send()
-
+    alert(`Datos enviados exitosamente, se enviarion ${est.length} estudiantes`);
+    location.reload();
 }
 
+
+function agregarClass() {
+        event.preventDefault(); // Evita que el formulario se envíe
+        //Grupo, Nombre, Lecture, A_J, Comentario
+        // Obtén los valores seleccionados del select y el input
+
+        var grupo = document.getElementById('grupo').value;
+        var estudiante = document.getElementById('seleccion-estudiantes').value;
+        var clase = document.getElementById('nClass').value;
+        var accion = document.getElementById('a_j').value;
+        var comentario = document.getElementById('Comentario').value;
+
+        var nuevoElemento = document.createElement('li');
+        nuevoElemento.textContent = `Grupo: ${grupo}, Estudiante: ${estudiante}, Clase: ${clase},
+         [A]/[J]: ${accion},Comentario: ${comentario}`
+        document.getElementById('listaEstudiantes').appendChild(nuevoElemento);
+
+        grup.push(grupo);
+        est.push(estudiante);
+        lecture.push(clase);
+        a_j.push(accion)
+        coment.push(comentario);
+
+        //document.getElementById('grupo').value = '';
+        document.getElementById('seleccion-estudiantes').value = '';
+}
+
+function enviarClass(){
+    event.preventDefault();
+     let url = "/procesarClass";
+     var data = JSON.stringify({"estudiantes": est, "grupos": grup, "lectures": lecture,"a_j": a_j, "comentario": coment });
+    let http = new XMLHttpRequest();
+    http.open("POST", url);
+    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    http.send(data);
+
+    http.onreadystatechange = function () {
+        if (http.readyState === XMLHttpRequest.DONE) {
+            if (http.status !== 200) {
+                // Manejar la respuesta del servidor
+                 console.error("Error en la solicitud:", http.statusText);
+            }
+        }
+    };
+
+    alert(`Datos enviados exitosamente, se enviarion ${est.length} estudiantes`);
+    location.reload();
+}

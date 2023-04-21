@@ -1,0 +1,75 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Asistencia Clases
+{%endblock%}
+
+{%block links%}
+<a href="/ohAttendance" class="nav-link">Asistencia O.H</a>
+<a href="/registros" class="nav-link">Registros</a>
+<a href="/datos" class="nav-link">Datos</a>
+{%endblock%}
+
+{%block contenido%}
+        <article>
+            <div class="asistenciaForm">
+                <div class="titulo">
+                    <h1>Asistencia de Clases</h1>
+                </div>
+                <div class="asistenciaForm">
+                    <label for="grupo" class="texto"> Seleccione el grupo</label>
+                      <select name="grupo" id="grupo" class="texto">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                      </select>
+                      <br>
+
+                    <label for="Estudiante" name="Estudiante" id="Estudiante">Nombre del estudiante</label>
+                        <input list="Estudiantes" id="seleccion-estudiantes">
+                            <datalist id="Estudiantes">
+                            {% for estudiante in estudiantes %}
+                            <option value="{{estudiante.nombre}}">
+
+                            {% endfor %}
+
+                            </datalist>
+                      <br>
+
+                      <label for="nClass" name="nClass" class="texto" > Lecture </label>
+                      <select name="nClass" id="nClass" class="texto">
+                          {% for i in range(1, 41) %}
+                            <option value="{{ i }}" class="texto"> {{ i }} </option>
+                          {% endfor %}
+                      </select>
+
+                      
+                       <label for="a_j" name="a_j" class="texto">Asistencia (A) o Justificacion (J) </label>
+                      <select name="a_j" id="a_j"class="texto">
+                            <option value="A"> A </option>
+                            <option value="10-12"> J </option>
+                      </select>
+                      <br>
+
+                      <label for="Comentario" name="Comentario" class="texto">Comentario </label>
+                      <input type="text" name="Comentario" id="Comentario"class="texto">
+                      <br>
+
+                    <button id="btnAgregar" onclick="agregarClass()" class="btnAgregar">
+                        agregar
+                    </button>
+
+                    </div>
+
+                    <div class="lista">
+                        <ul id="listaEstudiantes" class="texto">
+                          <br><input type="submit" value="Submit" onclick="enviarClass()">
+                      </ul>
+                      </div>
+
+
+            </div>
+        </article>
+<script src="../static/script.js"> </script>
+{%endblock%}
+

@@ -3,15 +3,16 @@ from database import db
 from flask import Flask, render_template, request, url_for
 from flask_migrate import Migrate
 from flask_session import Session
-#from Forms import *
-#from helpers import *
 from Models import *
-from sqlalchemy import or_, desc
-from tempfile import mkdtemp
+from sqlalchemy import desc
 from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:Mysql.90210@localhost/attendance'
+
+with open('cred.txt', 'r') as f:
+    primera_linea = f.readline()
+
+app.config['SQLALCHEMY_DATABASE_URI'] = primera_linea
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #   Trackear las modificaciones realizadas
 db.init_app(app)
 
@@ -29,17 +30,21 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/ohAttendance', methods=["GET", "POST"])
 def inicio():  # put application's code here
     estudiantes = Estudiantes.query.order_by('id')
-
     if request.method == "POST":
         print("Se manda algo")
 
 
-    return render_template('index.html', estudiantes=estudiantes)
+    return render_template('ohattendance.html', estudiantes=estudiantes)
 
-@app.route('/procesar', methods=["GET", "POST"])
+@app.route('/classAttendance', methods=["GET", "POST"])
+def classAttendance():  # put application's code here
+    estudiantes = Estudiantes.query.order_by('id')
+    return render_template('classAttendance.html', estudiantes=estudiantes)
+
+@app.route('/procesarOH', methods=["GET", "POST"])
 def procesar():
     data = request.get_json()
     estudiante = data.get("estudiantes")
@@ -52,15 +57,15 @@ def procesar():
     staff_id = 1 #! Obtenerlo del login
 
     for a in range(len(estudiante)):
-        obj_estudiante = Estudiantes.query.filter_by(nombre=estudiante[a]).first()
+        obj_estudiante = Estudiantes.query.filter_by(student=estudiante[a]).first()
         print(f"obj_estudiante: {obj_estudiante}")
         if obj_estudiante:
-            print(f"Nombre: {obj_estudiante.nombre} Codigo: {obj_estudiante.codigo} Grupo: {obj_estudiante.grupo}")
+            print(f"Nombre: {obj_estudiante.student} Codigo: {obj_estudiante.code} Grupo: {obj_estudiante.group}")
             insercion = Registros(staff_id=staff_id,
-                                  estudiante_id=obj_estudiante.id,
-                                  ciclo=obj_estudiante.ciclo,
-                                  grupo=obj_estudiante.grupo,
-                                  nombre=obj_estudiante.nombre,
+                                  student_id=obj_estudiante.id,
+                                  cicle=obj_estudiante.cicle,
+                                  group=obj_estudiante.group,
+                                  student_name=obj_estudiante.student,
                                   type="OH",
                                   a_j="A",
                                   oh_week=semana[a],
@@ -73,7 +78,44 @@ def procesar():
     return redirect(url_for("inicio"))
 
 
+@app.route('/procesarClass', methods=["GET", "POST"])
+def procesarClass():
+    data = request.get_json()
+    estudiante = data.get("estudiantes")
+    grupo = data.get("grupos")
+    lectures = data.get("lectures")
+    a_j = data.get("a_j")
+    comentario = data.get("comentario")
 
+    staff_id = 1  # ! Obtenerlo del login
+    for a in range(len(estudiante)):
+        print(f"Estudiante: {estudiante[a]} Grupo: {grupo[a]} Lecture: {lectures[a]} A/J = [{a_j[a]}]")
+        obj_estudiante = Estudiantes.query.filter_by(student=estudiante[a]).first()
+        if obj_estudiante:
+            insercion = Registros(staff_id=staff_id,
+                                  student_id=obj_estudiante.id,
+                                  cicle=obj_estudiante.cicle,
+                                  group=obj_estudiante.group,
+                                  student_name=obj_estudiante.student,
+                                  type="C",
+                                  a_j= a_j[a],
+                                  lecture=lectures[a])
+            db.session.add(insercion)
+            db.session.commit()
+
+
+
+    return(redirect(url_for("inicio")))
+
+@app.route('/registros', methods=["GET", "POST"])
+def allregisters():  # put application's code here
+    registros = Registros.query.order_by(desc('id')).limit(150).all()
+
+    for registro in registros:
+        print(registro.id)
+
+
+    return render_template('registros.html', registros=registros)
 
 if __name__ == '__main__':
     app.run()
