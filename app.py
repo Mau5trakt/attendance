@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, url_for
 from flask_migrate import Migrate
 from flask_session import Session
 from Models import *
+from sqlalchemy import desc
 from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__)
 
@@ -105,6 +106,16 @@ def procesarClass():
 
 
     return(redirect(url_for("inicio")))
+
+@app.route('/registros', methods=["GET", "POST"])
+def allregisters():  # put application's code here
+    registros = Registros.query.order_by(desc('id')).limit(150).all()
+
+    for registro in registros:
+        print(registro.id)
+
+
+    return render_template('registros.html', registros=registros)
 
 if __name__ == '__main__':
     app.run()
