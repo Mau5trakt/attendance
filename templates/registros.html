@@ -29,10 +29,13 @@ Registros
                 <th scope="col">Student Name</th>
                 <th scope="col">Lecture</th>
                 <th scope="col">Type</th>
+                <th scope="col">A/J</th>
                 <th scope="col">OH Week</th>
                 <th scope="col">Weekday</th>
                 <th scope="col">Hour</th>
-                <th scope="col">duration</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Comment</th>
+
             </tr>
         </thead>
         <tbody>
@@ -49,8 +52,10 @@ Registros
                     <td class="texto">{{registro.type}}</td>
                     <td class="texto">{{registro.a_j}}</td>
                     <td class="texto">{{registro.oh_week}}</td>
+                    <td class="texto">{{registro.weekday}}</td>
                     <td class="texto">{{registro.hour}}</td>
                     <td class="texto">{{registro.duration}}</td>
+                    <td class="texto">{{registro.comment}}</td>
                 </tr>
             {%endfor%}
         </tbody>
