@@ -36,6 +36,7 @@ class Registros(db.Model):
     weekday = db.Column(db.String(15))
     hour = db.Column(db.String(6))
     duration = db.Column(db.Integer)
+    comment = db.Column(db.String(140))
 
     staff = db.relationship('Staff', back_populates='registros')
     estudiante = db.relationship('Estudiantes', back_populates='registros')
