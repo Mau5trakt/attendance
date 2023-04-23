@@ -71,7 +71,8 @@ def procesar():
                                   oh_week=semana[a],
                                   weekday=dia[a],
                                   hour=bloque[a],
-                                  duration=cumplimiento[a])
+                                  duration=cumplimiento[a],
+                                  comment=comentario[a])
             db.session.add(insercion)
             db.session.commit()
         #print(f"Estudiante: {estudiante[a]}: Grupo: {grupo[a]} Semana: {semana[a]} Dia: {dia[a]} Bloque: {bloque[a]} "  )
@@ -99,7 +100,9 @@ def procesarClass():
                                   student_name=obj_estudiante.student,
                                   type="C",
                                   a_j= a_j[a],
-                                  lecture=lectures[a])
+                                  lecture=lectures[a],
+                                  comment=comentario[a])
+
             db.session.add(insercion)
             db.session.commit()
 
