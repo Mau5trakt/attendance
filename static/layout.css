@@ -51,6 +51,17 @@ article{
     overflow-x: auto;
 }
 
+.login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.inputfield{
+    margin: 10px;
+}
+
 div .titulo{
     text-align: center;
     font-family: 'Barlow Semi Condensed', sans-serif;
@@ -62,6 +73,8 @@ div .titulo{
     text-align: justify;
     margin-bottom: 10px;
 }
+
+
 
 .btnAgregar{
     width: 30%;
