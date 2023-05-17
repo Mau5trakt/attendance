@@ -8,6 +8,7 @@ class Estudiantes(db.Model):
     cicle = db.Column(db.String(5), nullable=False) #Y23C2
     student = db.Column(db.String(100), nullable=False)
     group = db.Column(db.String(1), nullable=False)
+    
 
     registros = db.relationship('Registros', back_populates="estudiante")
 
@@ -23,7 +24,7 @@ class Staff(db.Model):
 
 class Registros(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    timestamp = db.Column(db.DateTime(), default=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    timestamp = db.Column(db.String(20), default=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     staff_id = db.Column(db.Integer, db.ForeignKey('staff.id'))
     student_id = db.Column(db.Integer, db.ForeignKey('estudiantes.id'))
     cicle = db.Column(db.String(5), nullable=False) #? Se repite pero aha
