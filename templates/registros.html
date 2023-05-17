@@ -14,7 +14,10 @@ Registros
 <div class="asistenciaForm">
     <div class="titulo">
 <h1> Registros  </h1>
+<a href="/membersOH" class="texto">Members O.H</a>
     </div>
+
+
 
     <div class="asistenciaForm ">
     <table class="tabla table table-responsive" style="overflow: auto;">
@@ -63,6 +66,58 @@ Registros
 </div>
     </div>
 
+<br>
+
+    <div class="asistenciaForm ">
+        <table class="tabla table table-responsive" style="overflow: auto;">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cicle</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Total</th>
+                    {% for i in range(1, 19) %}
+                    <th scope="col">{{ i }} </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for consulta in query %}
+                    <tr>
+                        <th scope="row" class="texto">{{consulta.id}} </th>
+                        <td class="texto">{{consulta.student}}</td>
+                        <td class="texto">{{consulta.cicle}}</td>
+                        <td class="texto">{{consulta.group}}</td>
+                        <td class="titulo">{{consulta.cantidad}}</td>
+                        <td class="texto">{{consulta.semana1}}</td>
+                        <td class="texto">{{consulta.semana2}}</td>
+                        <td class="texto">{{consulta.semana3}}</td>
+                        <td class="texto">{{consulta.semana4}}</td>
+                        <td class="texto">{{consulta.semana5}}</td>
+                        <td class="texto">{{consulta.semana6}}</td>
+                        <td class="texto">{{consulta.semana7}}</td>
+                        <td class="texto">{{consulta.semana8}}</td>
+                        <td class="texto">{{consulta.semana9}}</td>
+                        <td class="texto">{{consulta.semana10}}</td>
+                        <td class="texto">{{consulta.semana11}}</td>
+                        <td class="texto">{{consulta.semana12}}</td>
+                        <td class="texto">{{consulta.semana13}}</td>
+                        <td class="texto">{{consulta.semana14}}</td>
+                        <td class="texto">{{consulta.semana15}}</td>
+                        <td class="texto">{{consulta.semana16}}</td>
+                        <td class="texto">{{consulta.semana17}}</td>
+                        <td class="texto">{{consulta.semana18}}</td>
+
+
+
+                    </tr>
+                {%endfor%}
+
+            </tbody>
+        </table>
+    </div>
+        </div>
 
 
 {%endblock%}
