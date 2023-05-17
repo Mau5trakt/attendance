@@ -1,0 +1,70 @@
+-- Mostrar la cantidad de horas que tiene por semana cada estudiante
+-- Si no tiene registro aun, se le pone 0
+
+SELECT estudiantes.student, COALESCE(SUM(registros.duration), 0) as cantidad
+FROM estudiantes
+LEFT JOIN registros ON estudiantes.student = registros.student_name AND registros.oh_week = 2
+GROUP BY estudiantes.student
+ORDER BY estudiantes.id;
+
+-- Obtener la sumatoria de las horas de cada estudiante
+
+SELECT student_name, COALESCE(sum(duration), 0) as cantidad from registros
+GROUP BY student_name ORDER BY student_id;
+
+
+-- la buenarda
+SELECT estudiantes.*, COALESCE(sum(registros.duration), 0) as cantidad
+FROM estudiantes
+LEFT JOIN registros ON estudiantes.student = registros.student_name
+WHERE estudiantes.cicle = "Y23C1"
+GROUP BY estudiantes.student
+ORDER BY estudiantes.id;
+
+mostrar las horas de todos los estudiantes desde la semana 1 hasta la 3
+SELECT estudiantes.student,
+       COALESCE(SUM(CASE
+                      WHEN registros.oh_week = gs.week_number THEN registros.duration
+                      ELSE 0
+                    END), 0) AS cantidad_semana,
+       COALESCE(SUM(registros.duration), 0) AS cantidad_total
+FROM estudiantes
+LEFT JOIN registros ON estudiantes.student = registros.student_name
+                    AND registros.oh_week = gs.week_number
+CROSS JOIN GENERATE_SERIES(1, 18) AS gs(week_number)
+GROUP BY estudiantes.student, gs.week_number
+ORDER BY estudiantes.student, gs.week_number;
+
+-- muestra todo pero con los campos cantidad repetidos
+
+SELECT subquery.student, subquery.semana1, subquery.semana2, subquery.semana3, COALESCE(sum(registros.duration), 0) as cantidad
+FROM (
+  SELECT estudiantes.student,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 1 THEN registros.duration END), 0) as semana1,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 2 THEN registros.duration END), 0) as semana2,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 3 THEN registros.duration END), 0) as semana3
+  FROM estudiantes
+  LEFT JOIN registros ON estudiantes.student = registros.student_name
+  GROUP BY estudiantes.student
+) as subquery
+LEFT JOIN registros ON subquery.student = registros.student_name AND registros.cicle = "Y23C1"
+GROUP BY subquery.student
+ORDER BY subquery.student;
+
+-- muestra el reporte de horas realizadas por la persona en cada semana
+-- Semana 1 hasta la semana 5
+SELECT subquery.student, subquery.semana1, subquery.semana2, subquery.semana3, subquery.semana4, subquery.semana5, COALESCE(sum(registros.duration), 0) as cantidad
+FROM (
+  SELECT estudiantes.student,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 1 THEN registros.duration END), 0) as semana1,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 2 THEN registros.duration END), 0) as semana2,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 3 THEN registros.duration END), 0) as semana3,
+         COALESCE(SUM(CASE WHEN registros.oh_week = 4 THEN registros.duration END), 0) as semana4,
+    	   COALESCE(SUM(CASE WHEN registros.oh_week = 5 THEN registros.duration END), 0) as semana5
+  FROM estudiantes
+  LEFT JOIN registros ON estudiantes.student = registros.student_name
+  GROUP BY estudiantes.student
+) as subquery
+LEFT JOIN registros ON subquery.student = registros.student_name AND registros.cicle = "Y23C1"
+GROUP BY subquery.student
+ORDER BY subquery.student;
