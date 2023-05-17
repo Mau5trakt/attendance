@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h2>Usuario</h2>
-<input type="text" name="user" id="user">
-<h2>contraseña</h2>
-<input type="password" name="password" id="passsword">
+{% extends "layout.html"%}
 
-</body>
-</html>
+
+{%block title%}
+    Login
+{%endblock%}
+
+{%block contenido%}
+    <article>
+        <div>
+            <div class="titulo">
+                <h1>Login</h1>
+            <form class="login" action="/iniciar" method="POST">
+                <input type="text" name="user" id="user" placeholder="Usuario" class="inputfield"></input>
+               <input type="password" name="password" id="password" placeholder="Contraseña" class="inputfield"></input>
+               <input type="submit" id="send" class="" value="Iniciar Sesion">
+            </form>
+            </div>
+{%endblock%}
