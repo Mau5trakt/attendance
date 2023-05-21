@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from app import db
+from sqlalchemy import text
 
 class Estudiantes(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -8,7 +9,7 @@ class Estudiantes(db.Model):
     cicle = db.Column(db.String(5), nullable=False) #Y23C2
     student = db.Column(db.String(100), nullable=False)
     group = db.Column(db.String(1), nullable=False)
-    
+
 
     registros = db.relationship('Registros', back_populates="estudiante")
 
@@ -20,6 +21,7 @@ class Staff(db.Model):
     password = db.Column(db.String(100), nullable=False)
 
     registros = db.relationship('Registros', back_populates='staff')
+    errores = db.relationship('Errores', back_populates='staff')
 
 
 class Registros(db.Model):
@@ -41,3 +43,14 @@ class Registros(db.Model):
 
     staff = db.relationship('Staff', back_populates='registros')
     estudiante = db.relationship('Estudiantes', back_populates='registros')
+
+class Errores(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    staff_id = db.Column(db.Integer, db.ForeignKey('staff.id'))
+    register = db.Column(db.Integer, nullable=False)
+    coment = db.Column(db.String(400), nullable=False)
+    status = db.Column(db.Integer, default=0)
+
+    staff = db.relationship('Staff', back_populates='errores')
+
+
