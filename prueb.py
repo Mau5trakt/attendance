@@ -1,4 +1,7 @@
 from datetime import  datetime
+import os
+
+from werkzeug.security import check_password_hash, generate_password_hash
 
 #now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 #print(now)
@@ -6,4 +9,13 @@ from datetime import  datetime
 with open('cred.txt', 'r') as f:
     primera_linea = f.readline()
 
-print(primera_linea)
+basedir = os.path.abspath(os.path.dirname(__file__))
+print(basedir)
+#print(primera_linea)
+
+contra = "1234"
+
+generada = generate_password_hash(contra)
+
+print(generada)
+
