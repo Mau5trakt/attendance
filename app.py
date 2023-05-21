@@ -68,6 +68,8 @@ def login():
             return apology("Usuario o Clave Incorrecto", 403)
 
         session["code"] = staff.code
+        session["id"] = staff.id
+        session["role"] = staff.role
 
         return render_template("ohattendance.html")
 
@@ -190,13 +192,35 @@ def members():
 
     print(type(query))
 
-
-
-
-
-
-
     return render_template('membersOH.html', query=query)
+
+
+@app.route('/errores', methods=["GET", "POST"])
+@login_required
+def error():
+
+
+    return render_template('errores.html')
+
+
+@app.route('/procesarError', methods=["GET", "POST"])
+@login_required
+def procesarError():
+    data = request.get_json()
+    comentarios = data.get("comentario")
+    registros = data.get("registros")
+    print(session["id"])
+
+    for a in range(len(registros)):
+        insercion = Errores(staff_id=session["id"],
+                            register=registros[a],
+                            coment=comentarios[a])
+        db.session.add(insercion)
+        db.session.commit()
+
+    return render_template('errores.html')
+
+
 
 
 if __name__ == '__main__':
