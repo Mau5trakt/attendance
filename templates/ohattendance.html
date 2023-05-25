@@ -1,21 +1,22 @@
-{% extends "layout.html"%}
+{% extends "layout.html" %}
 
-{%block title%}
-    Asistencia OH
-{%endblock%}
+{% block title %} Asistencia OH {% endblock %}
 
-{%block links%}
+{% block links %}
 <a href="/classAttendance" class="nav-link">Asistencia Clases</a>
 <a href="/registros" class="nav-link">Registros</a>
-<a href="/errores" class="nav-link">Errores</a>
-{%endblock%}
+<a href="/datos" class="nav-link">Datos</a>
+{% endblock %}
 
-{%block contenido%}
-        <article>
-            <div class="asistenciaForm">
-                <div class="titulo">
-                    <h1>Asistencia Office Hours</h1>
-                </div>
+{% block contenido %}
+
+<div class="flex justify-center">
+  <div class=" w-full max-w-4xl mt-6">
+    <form class="form-container asistenciaForm bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 backdrop-blur-lg border-slate-700">
+      <div class="asistenciaForm">
+        <div class="text-center font-bold mb-6">
+          <h1>Asistencia Office Hours</h1>
+        </div>
 
 
                 <div class="asistenciaForm">

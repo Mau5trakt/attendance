@@ -14,7 +14,7 @@ Members OH
 <a href="/" class="texto">Members OH</a>
     </div>
 
-    <div class="asistenciaForm ">
+    <!-- <div class="asistenciaForm ">
         <table class="tabla table table-responsive" style="overflow: auto;">
             <thead>
                 <tr>
@@ -63,6 +63,121 @@ Members OH
             </tbody>
         </table>
     </div>
+        </div> -->
+
+<!-- component -->
+<div class="asistenciaForm mb-3">
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table class="tabla min-w-full">
+                        <thead class="bg-white border-b">
+                            <tr>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Id
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Name
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Cicle
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Group
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Total
+                                </th>
+                               
+                                {% for i in range(1, 19) %}
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left bg-white">
+                                    {{ i }}
+                                </th>
+                                
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set row_color = true %}
+                            {% for consulta in query %}
+                            <tr class="{% if loop.index is divisibleby(2) %}bg-gray-100{% else %}bg-rose-100{% endif %} border-b">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{consulta.id}}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.student}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.cicle}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.group}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.cantidad}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana1}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana2}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana3}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana4}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana5}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana6}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana7}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana8}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana9}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana10}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana11}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana12}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana13}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana14}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana15}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana16}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana17}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{consulta.semana18}}
+                                </td>
+                            </tr>
+                            {% set row_color = not row_color %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 
     {%endblock%}

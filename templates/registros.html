@@ -1,123 +1,261 @@
-{%extends "layout.html"%}
-
-{%block title%}
-Registros
-{%endblock%}
-
-{%block Tlinks%}
-<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
-<script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
-{%endblock%}
-
-
-{%block contenido%}
+{%extends "layout.html"%} {%block title%} Registros {%endblock%} {%block
+Tlinks%}
+<link
+  crossorigin="anonymous"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+  rel="stylesheet"
+/>
+<script
+  crossorigin="anonymous"
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+></script>
+{%endblock%} {%block contenido%}
 <div class="asistenciaForm">
-    <div class="titulo">
-<h1> Registros  </h1>
-<a href="/membersOH" class="texto">Members O.H</a>
-    </div>
+  <div class="titulo">
+    <h1>Registros</h1>
+    <a href="/membersOH" class="texto">Members O.H</a>
+  </div>
 
 
-
-    <div class="asistenciaForm ">
-    <table class="tabla table table-responsive" style="overflow: auto;">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Timestamp</th>
-                <th scope="col">Staff Id</th>
-                <th scope="col">Student Id</th>
-                <th scope="col">Cicle</th>
-                <th scope="col">Group</th>
-                <th scope="col">Student Name</th>
-                <th scope="col">Lecture</th>
-                <th scope="col">Type</th>
-                <th scope="col">A/J</th>
-                <th scope="col">OH Week</th>
-                <th scope="col">Weekday</th>
-                <th scope="col">Hour</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Comment</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            {%for registro in registros%}
+  <div class="asistenciaForm mb-3">
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="tabla min-w-full overflow-auto">
+              <thead class="bg-white border-b">
                 <tr>
-                    <th scope="row" class="texto">{{registro.id}} </th>
-                    <td class="texto">{{registro.timestamp}}</td>
-                    <td class="texto">{{registro.staff_id}}</td>
-                    <td class="texto">{{registro.student_id}}</td>
-                    <td class="texto">{{registro.cicle}}</td>
-                    <td class="texto">{{registro.group}}</td>
-                    <td class="texto">{{registro.student_name}}</td>
-                    <td class="texto">{{registro.lecture}}</td>
-                    <td class="texto">{{registro.type}}</td>
-                    <td class="texto">{{registro.a_j}}</td>
-                    <td class="texto">{{registro.oh_week}}</td>
-                    <td class="texto">{{registro.weekday}}</td>
-                    <td class="texto">{{registro.hour}}</td>
-                    <td class="texto">{{registro.duration}}</td>
-                    <td class="texto">{{registro.comment}}</td>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Id</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Timestamp</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Staff Id</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Student Id</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Cicle</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Group</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Student Name</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Lecture</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Type</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">A/J</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">OH Week</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Weekday</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Hour</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Duration</th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Comment</th>
                 </tr>
-            {%endfor%}
-        </tbody>
-    </table>
-</div>
-    </div>
-
-<br>
-
-    <div class="asistenciaForm ">
-        <table class="tabla table table-responsive" style="overflow: auto;">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Cicle</th>
-                    <th scope="col">Group</th>
-                    <th scope="col">Total</th>
-                    {% for i in range(1, 19) %}
-                    <th scope="col">{{ i }} </th>
-                    {% endfor %}
+              </thead>
+              <tbody>
+                {% set row_color = true %}
+                {%for registro in registros%}
+                <tr class="{% if loop.index is divisibleby(2) %}bg-gray-100{% else %}bg-green-100{% endif %} border-b">
+                  <th scope="row" class="texto">{{registro.id}}</th>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.timestamp}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.staff_id}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.student_id}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.cicle}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.group}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.student_name}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.lecture}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.type}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.a_j}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.oh_week}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.weekday}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.hour}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.duration}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{registro.comment}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for consulta in query %}
-                    <tr>
-                        <th scope="row" class="texto">{{consulta.id}} </th>
-                        <td class="texto">{{consulta.student}}</td>
-                        <td class="texto">{{consulta.cicle}}</td>
-                        <td class="texto">{{consulta.group}}</td>
-                        <td class="titulo">{{consulta.cantidad}}</td>
-                        <td class="texto">{{consulta.semana1}}</td>
-                        <td class="texto">{{consulta.semana2}}</td>
-                        <td class="texto">{{consulta.semana3}}</td>
-                        <td class="texto">{{consulta.semana4}}</td>
-                        <td class="texto">{{consulta.semana5}}</td>
-                        <td class="texto">{{consulta.semana6}}</td>
-                        <td class="texto">{{consulta.semana7}}</td>
-                        <td class="texto">{{consulta.semana8}}</td>
-                        <td class="texto">{{consulta.semana9}}</td>
-                        <td class="texto">{{consulta.semana10}}</td>
-                        <td class="texto">{{consulta.semana11}}</td>
-                        <td class="texto">{{consulta.semana12}}</td>
-                        <td class="texto">{{consulta.semana13}}</td>
-                        <td class="texto">{{consulta.semana14}}</td>
-                        <td class="texto">{{consulta.semana15}}</td>
-                        <td class="texto">{{consulta.semana16}}</td>
-                        <td class="texto">{{consulta.semana17}}</td>
-                        <td class="texto">{{consulta.semana18}}</td>
-
-
-
-                    </tr>
+                {% set row_color = not row_color %}
                 {%endfor%}
-
-            </tbody>
-        </table>
-    </div>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
+    </div>
+    <!--   /////////////////////////////////////////////////////////////////////////////////////////////////               -->
+  </div>
 
+  <br />
+
+  <div class="asistenciaForm mb-3">
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="tabla min-w-full">
+              <thead class="bg-white border-b">
+                <tr>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Id
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Cicle
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Group
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Total
+                  </th>
+
+                  {% for i in range(1, 19) %}
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left bg-white"
+                  >
+                    {{ i }}
+                  </th>
+
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% set row_color = true %} {% for consulta in query %}
+                <tr
+                  class="{% if loop.index is divisibleby(2) %}bg-gray-100{% else %}bg-rose-100{% endif %} border-b"
+                >
+                  <td
+                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                  >
+                    {{consulta.id}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.student}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.cicle}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.group}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.cantidad}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana1}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana2}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana3}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana4}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana5}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana6}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana7}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana8}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana9}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana10}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana11}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana12}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana13}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana14}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana15}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana16}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana17}}
+                  </td>
+                  <td
+                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  >
+                    {{consulta.semana18}}
+                  </td>
+                </tr>
+                {% set row_color = not row_color %} {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {%endblock%}

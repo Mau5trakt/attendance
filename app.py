@@ -211,6 +211,7 @@ def procesarError():
     registros = data.get("registros")
     print(session["id"])
 
+#db.execute("INSERT INTO Errores (staff_id, register, comment) VALUES(?, ?, ?)", session["id"], registros[a], comentarios[a])
     for a in range(len(registros)):
         insercion = Errores(staff_id=session["id"],
                             register=registros[a],
