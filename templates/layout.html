@@ -9,17 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@800&family=Lusitana&family=Maitree&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     {%block Tlinks%}
     {%endblock%}
     <title> {%block title%} {%endblock%} </title>
 </head>
-<body>
-    <header>
+<body class="bg-gray-100 backdrop-blur-sm">
+    <header class="bg-rose-700">
         <div class="logo">
             <a href="/" class="logo-texto">CS50 Attendance</a>
         </div>
 
-    <nav>
+    <nav class="bg-rose-700">
       {%block links%}
       {%endblock%}
     </nav>
