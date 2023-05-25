@@ -1,98 +1,127 @@
-{% extends "layout.html"%}
+{% extends "layout.html" %}
 
-{%block title%}
-    Asistencia OH
-{%endblock%}
+{% block title %} Asistencia OH {% endblock %}
 
-{%block links%}
+{% block links %}
 <a href="/classAttendance" class="nav-link">Asistencia Clases</a>
 <a href="/registros" class="nav-link">Registros</a>
 <a href="/datos" class="nav-link">Datos</a>
-{%endblock%}
+{% endblock %}
 
-{%block contenido%}
-        <article>
-            <div class="asistenciaForm">
-                <div class="titulo">
-                    <h1>Asistencia Office Hours</h1>
-                </div>
+{% block contenido %}
 
+<div class="flex justify-center">
+  <div class=" w-full max-w-4xl mt-6">
+    <form class="form-container asistenciaForm bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 backdrop-blur-lg border-slate-700">
+      <div class="asistenciaForm">
+        <div class="text-center font-bold mb-6">
+          <h1>Asistencia Office Hours</h1>
+        </div>
 
-                <div class="asistenciaForm">
+        <div class="mb-6">
+          <label for="grupo" class="font-semibold text-center" id="selecgrupo">Seleccione el grupo</label>
+          <br>
+          <select name="grupo" id="grupo" class="texto border-solid border-2 border-black mt-5">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+          <br /><br />
+        </div>
 
-                    <label for="grupo" class="texto"> Seleccione el grupo</label>
-                      <select name="grupo" id="grupo" class="texto">
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                      </select>
-                      <br><br>
-                
-                    <label for="Estudiante" name="Estudiante" id="Estudiante" class="texto">Nombre del estudiante</label>
-                        <input list="Estudiantes" id="seleccion-estudiantes" class="texto">
-                            <datalist id="Estudiantes">
-                            {% for estudiante in estudiantes %}
-                            <option value="{{ estudiante.student }}" class="texto">
-                
-                            {% endfor %}
-                
-                            </datalist>
-                      <br>
-                
-                      <label for="Semana" name="Semana" class="texto" >Semana de OH </label>
-                      <select name="Semana" id="Semana" class="texto">
-                          {% for i in range(1, 19) %}
-                            <option value="{{ i }}" class="texto"> {{ i }} </option>
-                          {% endfor %}
-                      </select>
-                      <br>
-                
-                      <label for="Dsemana" name="Dsemana"  class="texto">Dia de la semana </label>
-                      <select name="Dsemana" id="Dsemana" class="texto">
-                            <option value="ma"class="texto"> ma </option>
-                            <option value="mi"class="texto"> mi </option>
-                            <option value="vi"class="texto"> vi </option>
-                            <option value="sab"class="texto"> sab </option>
-                      </select>
-                      <br>
-                
-                       <label for="Bloque" name="Bloque" class="texto">Bloque </label>
-                      <select name="Bloque" id="Bloque"class="texto">
-                            <option value="8-10"> 8-10 </option>
-                            <option value="10-12"> 10-12 </option>
-                            <option value="12-02"> 12-02 </option>
-                            <option value="02-04"> 02-04 </option>
-                            <option value="04-06"> 04-06 </option>
-                      </select>
-                      <br>
-                
-                      <label for="Cumplimiento" name="Cumplimiento" class="texto">Cumplimiento </label>
-                      <select name="Cumplimiento" id="Cumplimiento"class="texto">
-                            <option value="0.5"> 0.5 </option>
-                            <option value="1"> 1 </option>
-                            <option value="1.5"> 1.5 </option>
-                            <option value="2"> 2 </option>
-                      </select>
-                      <br>
-                
-                      <label for="Comentario" name="Comentario" class="texto">Comentario </label>
-                      <input type="text" name="Comentario" id="Comentario"class="texto">
-                      <br>
-                
-                    <button id="btnAgregar" onclick="agregarOH()" class="btnAgregar">
-                        agregar
-                    </button>
-                
-                    </div>
+        <div class="mb-6">
+          <label for="Estudiante" name="Estudiante" id="Estudiante" class="font-semibold text-center">Nombre del estudiante</label>
+          <br>
+          <input list="Estudiantes" id="seleccion-estudiantes" class="texto border-solid border-2 border-black mt-5" />
+          <datalist id="Estudiantes">
+            {% for estudiante in estudiantes %}
+            <option value="{{ estudiante.student }}" class="texto"></option>
+            {% endfor %}
+          </datalist>
+          <br />
+        </div>
 
-                    <div class="lista">
-                        <ul id="listaEstudiantes" class="texto">
-                          <br> <br> <br><input type="submit" value="Submit" onclick="enviarOH()">
-                      </ul>
-                      </div>
-                      
+        <div class="mb-6 mt-5">
+          <label for="Semana" name="Semana" class="font-semibold text-center semana">Semana de OH </label>
+          <br>
+          <select name="Semana" id="Semana" class="texto border-solid border-2 border-black ml-20 mt-5 w-48">
+            {% for i in range(1, 19) %}
+            <option value="{{ i }}" class="texto">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <br />
+        </div>
 
-            </div>
-        </article>
-<script src="../static/script.js"> </script>
-{%endblock%}
+        <div class="mb-6 mt-5 ">
+          <label for="Dsemana" name="Dsemana" class="font-semibold text-center ml-14" id="dsemana">Dia de la semana</label>
+          <br>
+          <select name="Dsemana" id="Dsemana" class="texto border-solid border-2 border-black ml-20 mt-5">
+            <option value="ma" class="texto">ma</option>
+            <option value="mi" class="texto">mi</option>
+            <option value="vi" class="texto">vi</option>
+            <option value="sab" class="texto">sab</option>
+          </select>
+          <br />
+        </div>
+
+        <div class="mb-6 mt-5">
+          <label for="Bloque" name="Bloque" class="bloque font-semibold text-center">Bloque</label>
+          <br>
+          <select name="Bloque" id="Bloque" class="texto border-solid border-2 border-black mt-5">
+            <option value="8-10">8-10</option>
+            <option value="10-12">10-12</option>
+            <option value="12-02">12-02</option>
+            <option value="02-04">02-04</option>
+            <option value="04-06">04-06</option>
+          </select>
+          <br />
+        </div>
+
+        <div class="mb-6 mt-5">
+          <label for="Cumplimiento" name="Cumplimiento" class="font-semibold text-center cumpli">Cumplimiento</label>
+          <br>
+          <select name="Cumplimiento" id="Cumplimiento" class="texto border-solid border-2 border-black ml-20 mt-5">
+            <option value="0.5">0.5</option>
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+          </select>
+          <br />
+        </div>
+
+        <div class="mb-6 mt-5">
+          <label for="Comentario" name="Comentario" class="comentario font-semibold text-center">Comentario</label>
+          <br>
+          <textarea type="text" name="Comentario" id="Comentario" class="texto border-solid border-2 border-black ml-8 mt-5"></textarea>
+        </div>
+        
+        
+        <div class="space-x-4 mt-5 botones">
+          <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="agregarOH()">Agregar</button>
+          <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline enviar-btn" type="submit" value="Submit" onclick="enviarOH()">Enviar</button>
+        </div>
+        <table class="lista flex items-center justify-between mt-5 ml-2 w-85 border-b">
+          <tr>
+            <td class="p-4">
+              <ul id="listaEstudiantes" class="text-center font-semibold">
+                <tr class=" ">
+                  <td class="p-4"></td>
+                </tr>
+                <tr class="">
+                  <td class=""></td>
+                </tr>
+                <tr class="">
+                  <td class="p-4"></td>
+                </tr>
+              </ul>
+            </td>
+          </tr>
+        </table>
+          
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../static/script.js"></script>
+{% endblock %}

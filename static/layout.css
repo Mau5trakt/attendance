@@ -1,110 +1,296 @@
-
-header{
-    display: flex;
-    justify-content: space-between;
-    min-height: 70px;
-    background-color: #3D53AA;
-    align-items: center;
-    padding: 10px;
+header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 70px;
+  background-color: #3d53aa;
+  align-items: center;
+  padding: 10px;
 }
 
-.logo{
-    display: flex;
+.logo {
+  display: flex;
 }
 
-.logo-texto{
-    font-family: 'Lusitana', serif;
-    color: #fff;
-    font-size: 60px;
+.logo-texto {
+  font-family: "Lusitana", serif;
+  color: #fff;
+  font-size: 60px;
 }
 
-nav a{
-    font-family: 'Lusitana', serif;
-    color: #fff;
-    font-size: 40px;
-    margin: 0px 15px 0px 15px;
+nav a {
+  font-family: "Lusitana", serif;
+  color: #fff;
+  font-size: 40px;
+  margin: 0px 15px 0px 15px;
 }
 
-a:link, a:visited, a:active{
-    text-decoration: none;
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
-.contenedor{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-article{
-    height: auto;
-    width: 60%;
-    padding: 0px 20px 0px 20px;
+/*/////////////////////////////////////////////////////////////////////*/
+
+.lecture{
+  margin-left: 400px;
 }
 
+.cumpli{
+    margin-left: 380px;
+}
 
-.asistenciaForm{
-    display: flex;
-    justify-content: center;
-    display: flex;
+.form-container {
+  width: 1300px;
+}
+
+.respologin {
+  margin-left: 165px;
+}
+.respouser {
+  margin-left: 175px;
+}
+
+#grupo {
+  margin-left: 300px;
+  width: 250px;
+  height: 40px;
+}
+
+#selecgrupo {
+  margin-left: 350px;
+}
+#Estudiante {
+    margin-left: 340px;
+}
+
+#seleccion-estudiantes{
+    margin-left: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+.semana{
+    margin-left: 370px;
+}
+
+#Semana{
+    margin-left: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+#dsemana{
+    margin-left: 365px;
+}
+
+#Dsemana{
+    margin-left: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+.bloque{
+    margin-left: 400px;
+}
+
+#Bloque{
+    margin-left: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+#Cumplimiento{
+    margin-left: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+.comentario{
+    margin-left: 390px;
+}
+
+#Comentario{
+    margin-left: 300px;
+    width: 250px;
+}
+
+.botones{
+    margin-left: 330px;
+}
+
+#nClass{
+  margin-left: 300px;
+  width: 250px;
+  height: 40px;
+}
+
+#AJ{
+  margin-left: 317px;
+}
+
+#a_j{
+  margin-left: 300px;
+  width: 250px;
+  height: 40px;
+}
+
+@media (max-width: 600px) {
+
+  #AJ{
+    margin-left: 55px;
+  }
+  
+
+  .lecture{
+    margin-left: 135px;
+  }
+
+    .botones{
+        margin-left: 65px;
+    }
+
+
+    #Comentario{
+        margin-left: 60px;
+        width: 215px;
+    }
+
+    .cumpli{
+        margin-left: 110px;
+    }
+
+    .comentario{
+        margin-left: 120px;
+    }
+
+    #a_j{
+      margin-left: 60px;
+      width: 215px;
+      height: 40px;
+    }
+
+    #Bloque{
+        margin-left: 60px;
+        width: 215px;
+        height: 40px;
+    }
+
+    #nClass{
+      margin-left: 60px;
+      width: 215px;
+      height: 40px;
+    }
+
+
+    .bloque{
+        margin-left: 135px;
+    }
+
+  .respologin {
+    margin-left: 125px;
+  }
+
+  #dsemana{
+    margin-left: 95px;
+}
+
+  .respouser {
+    margin-left: 135px;
+  }
+
+  .form-container {
+    width: auto;
+    padding: 0 20px; /* Opcional: puedes ajustar el padding según tus necesidades */
+  }
+
+  #selecgrupo {
+    margin-left: 80px;
+  }
+
+  #grupo {
+    margin-left: 55px;
+    width: 215px;
+    height: 40px;
+  }
+  #Estudiante {
+    margin-left: 75px;
+}
+
+#seleccion-estudiantes{
+    margin-left: 53px;
+    width: 217px;
+}
+
+.semana{
+    margin-left: 100px;
+}
+
+#Semana{
+    margin-left: 55px;
+    width: 215px;
+    height: 40px;
+}
+
+#Dsemana{
+    margin-left: 55px;
+    width: 215px;
+    height: 40px;
+
+}
+
+#Cumplimiento{
+    margin-left: 60px;
+    width: 215px;
+    height: 40px;
+}
+
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////*/
+article {
+  height: auto;
+  width: 60%;
+  padding: 0px 20px 0px 20px;
+}
+
+.asistenciaForm {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 785px) {
+  header {
     flex-direction: column;
-    max-width: 100%;
-    overflow-x: auto;
-}
+  }
 
-.login{
-    display: flex;
-    justify-content: center;
+  nav {
+    padding: 10px 0px;
+  }
+
+  nav a {
+    font-size: 20px;
+  }
+
+  .contenedor {
     flex-direction: column;
-    max-width: 100%;
-}
+  }
 
-.inputfield{
-    margin: 10px;
-}
+  article {
+    width: 100%;
+  }
 
-div .titulo{
-    text-align: center;
-    font-family: 'Barlow Semi Condensed', sans-serif;
-}
-
-
-.texto{
-    font-family: 'Maitree', serif;
-    text-align: justify;
-    margin-bottom: 10px;
-}
-
-
-
-.btnAgregar{
-    width: 30%;
-}
-
-
-@media only screen and (max-width: 785px){
-    header{
-        flex-direction: column;
-    }
-
-    nav{
-        padding: 10px 0px;
-    }
-
-
-    nav a{
-        font-size: 20px;
-    }
-
-    .contenedor{
-        flex-direction: column;
-    }
-
-    article{
-        width: 100%;
-    }
-
-    aside{
-        width: 100%;
-    }
-
+  aside {
+    width: 100%;
+  }
 }
