@@ -1,0 +1,48 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Errores
+{%endblock%}
+
+{%block links%}
+<a href="/" class="nav-link">Asistencia O.H</a>
+<a href="/classAttendance" class="nav-link">Asistencia Clases</a>
+<a href="/registros" class="nav-link">Registros</a>
+<a href="/datos" class="nav-link">Datos</a>
+{%endblock%}
+
+{%block contenido%}
+
+<article>
+    <div class="asistenciaForm">
+        <div class="titulo">
+            <h1>Errores</h1>
+        </div>
+        <div class="asistenciaForm">
+            <label for="registro" class="texto"> Numero de registro</label>
+              <input name="registro" type="number" id="registro"  >
+              <br>
+
+              <label for="Comentario" name="Comentario" class="texto">Comentario </label>
+              <input type="text" name="Comentario" id="Comentario" class="texto">
+              <br>
+
+            <button id="btnAgregar" onclick="agregarError()" class="btnAgregar">
+                agregar
+            </button>
+
+            </div>
+
+            <div class="lista">
+                <ul id="listaEstudiantes" class="texto">
+                  <br><input type="submit" value="Submit" onclick="enviarError()">
+              </ul>
+              </div>
+
+
+    </div>
+</article>
+<script src="../static/script.js"> </script>
+
+
+{%endblock%}
