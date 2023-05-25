@@ -172,7 +172,8 @@ def procesarClass():
 @login_required
 def allregisters():
     registros = Registros.query.order_by(desc('id')).limit(150).all()
-    query = db.session.execute(reporteOhMembers).fetchall()
+    reporte = text(reporteOhMembers)
+    query = db.session.execute(reporte).fetchall()
 
     for registro in registros:
         print(registro.id)
@@ -185,7 +186,8 @@ def allregisters():
 @login_required
 def members():
     #query = db.session.execute('SELECT estudiantes.*, COALESCE(sum(registros.duration), 0) as cantidad FROM estudiantes LEFT JOIN registros ON estudiantes.student = registros.student_name WHERE estudiantes.cicle = "Y23C1" GROUP BY estudiantes.student ORDER BY estudiantes.id;').fetchall()
-    query = db.session.execute(reporteOhMembers).fetchall()
+    reporte = text(reporteOhMembers)
+    query = db.session.execute(reporte).fetchall()
     #reporteOhMembers es la consulta importada de `consultas.py`
     for consulta in query:
         print(consulta)
