@@ -7,55 +7,7 @@ var cumpli = []; //lista de cumplimiento
 var coment = []; //lista de comentarios
 var lecture = [];
 var a_j = [];
-var registros = [];
 
-function agregarError(){
-    event.preventDefault();
-
-    var sRegistro = document.getElementById('registro').value;
-    var iRegistro  = parseInt(sRegistro);
-    var comentario = document.getElementById('Comentario').value;
-    if(isNaN(iRegistro)){
-        alert('El registro es incorrecto.');
-        document.getElementById('registro').value = '';
-    }
-    else if(comentario.length < 3){
-        alert('Introduzca el error del registro');
-    }
-
-    else{
-        var nuevoElemento = document.createElement('li');
-        nuevoElemento.textContent = `Registro: ${iRegistro}, Comentario: ${comentario}`
-        document.getElementById('listaEstudiantes').appendChild(nuevoElemento);
-        registros.push(iRegistro);
-        coment.push(comentario);
-        document.getElementById('registro').value = '';
-        document.getElementById('Comentario').value = '';
-    }
-}
-
-function enviarError(){
-    event.preventDefault();
-    let url = "/procesarError";
-    var data = JSON.stringify({"registros": registros, "comentario": coment});
-    let http = new XMLHttpRequest();
-    http.open("POST", url);
-    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    http.send(data);
-
-   http.onreadystatechange = function () {
-       if (http.readyState === XMLHttpRequest.DONE) {
-           if (http.status !== 200) {
-               // Manejar la respuesta del servidor
-                console.error("Error en la solicitud:", http.statusText);
-           }
-       }
-   };
-
-   alert(`Datos enviados exitosamente, se enviarion ${registros.length} errores`);
-   location.reload();
-
-}
 
 
 function agregarOH() {
